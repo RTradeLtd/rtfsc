@@ -2,7 +2,7 @@
 
 
 
-[![codecov](https://codecov.io/gh/RTradeLtd/rtfsc/branch/master/graph/badge.svg)](https://codecov.io/gh/RTradeLtd/rtfsc) [![Build Status](https://travis-ci.com/RTradeLtd/rtfsc.svg?branch=master)](https://travis-ci.com/RTradeLtd/rtfsc)
+[![codecov](https://codecov.io/gh/RTradeLtd/rtfsc/branch/master/graph/badge.svg)](https://codecov.io/gh/RTradeLtd/rtfsc) [![Build Status](https://travis-ci.com/RTradeLtd/rtfsc.svg?branch=master)](https://travis-ci.com/RTradeLtd/rtfsc) [![GoDoc](https://godoc.org/github.com/RTradeLtd/rtfsc?status.svg)](https://godoc.org/github.com/RTradeLtd/rtfsc)
 
 
 
