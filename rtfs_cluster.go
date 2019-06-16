@@ -2,7 +2,6 @@ package rtfsc
 
 import (
 	"context"
-	"fmt"
 
 	gocid "github.com/ipfs/go-cid"
 	"github.com/ipfs/ipfs-cluster/api"
@@ -73,12 +72,5 @@ func (cm *ClusterManager) Pin(ctx context.Context, cid gocid.Cid) error {
 	if err != nil {
 		return err
 	}
-	status, err := cm.Client.Status(ctx, cid, true)
-	if err != nil {
-		fmt.Println("error pinning hash to cluster")
-		return err
-	}
-	fmt.Println("status")
-	fmt.Println(status)
 	return nil
 }
