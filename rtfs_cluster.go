@@ -57,13 +57,9 @@ func (cm *ClusterManager) ListPeers(ctx context.Context) ([]*api.ID, error) {
 	return peers, nil
 }
 
-// DecodeHashString is used to take a hash string, and turn it into a CID
-func (cm *ClusterManager) DecodeHashString(cidString string) (gocid.Cid, error) {
-	cid, err := gocid.Decode(cidString)
-	if err != nil {
-		return gocid.Cid{}, err
-	}
-	return cid, nil
+// DecodeCID is a helper function to decode a cid from a string type to a cid.Cid type
+func (cm *ClusterManager) DecodeCID(cidString string) (gocid.Cid, error) {
+	return gocid.Decode(cidString)
 }
 
 // Pin is used to add a pin to the cluster
