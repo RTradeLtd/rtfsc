@@ -85,7 +85,7 @@ func TestClusterPin(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if err := cm.Pin(context.Background(), tt.args.cid); (err != nil) != tt.wantErr {
+			if _, err := cm.Pin(context.Background(), tt.args.cid); (err != nil) != tt.wantErr {
 				t.Fatalf("Pin() error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})

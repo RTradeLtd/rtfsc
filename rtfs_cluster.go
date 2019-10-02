@@ -67,10 +67,6 @@ func (cm *ClusterManager) DecodeHashString(cidString string) (gocid.Cid, error) 
 }
 
 // Pin is used to add a pin to the cluster
-func (cm *ClusterManager) Pin(ctx context.Context, cid gocid.Cid) error {
-	err := cm.Client.Pin(ctx, cid, api.PinOptions{ReplicationFactorMax: -1, ReplicationFactorMin: -1})
-	if err != nil {
-		return err
-	}
-	return nil
+func (cm *ClusterManager) Pin(ctx context.Context, cid gocid.Cid) (*api.Pin, error) {
+	return cm.Client.Pin(ctx, cid, api.PinOptions{ReplicationFactorMax: -1, ReplicationFactorMin: -1})
 }
