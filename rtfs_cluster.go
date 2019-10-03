@@ -57,20 +57,7 @@ func (cm *ClusterManager) ListPeers(ctx context.Context) ([]*api.ID, error) {
 	return peers, nil
 }
 
-// DecodeHashString is used to take a hash string, and turn it into a CID
-func (cm *ClusterManager) DecodeHashString(cidString string) (gocid.Cid, error) {
-	cid, err := gocid.Decode(cidString)
-	if err != nil {
-		return gocid.Cid{}, err
-	}
-	return cid, nil
-}
-
 // Pin is used to add a pin to the cluster
-func (cm *ClusterManager) Pin(ctx context.Context, cid gocid.Cid) error {
-	err := cm.Client.Pin(ctx, cid, api.PinOptions{ReplicationFactorMax: -1, ReplicationFactorMin: -1})
-	if err != nil {
-		return err
-	}
-	return nil
+func (cm *ClusterManager) Pin(ctx context.Context, cid gocid.Cid) (*api.Pin, error) {
+	return cm.Client.Pin(ctx, cid, api.PinOptions{ReplicationFactorMax: -1, ReplicationFactorMin: -1})
 }

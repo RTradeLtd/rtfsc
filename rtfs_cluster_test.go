@@ -36,39 +36,12 @@ func TestInitialize_Failure(t *testing.T) {
 	}
 }
 
-func TestDecodeHashString(t *testing.T) {
-	cm, err := rtfsc.Initialize(context.Background(), nodeOneAPIAddr, nodePort)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	type args struct {
-		hash string
-	}
-
-	tests := []struct {
-		name    string
-		args    args
-		wantErr bool
-	}{
-		{"Success", args{testPIN}, false},
-		{"Failure", args{"notahash"}, true},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if _, err := cm.DecodeHashString(tt.args.hash); (err != nil) != tt.wantErr {
-				t.Fatalf("DecodeHashString() error = %v, wantErr %v", err, tt.wantErr)
-			}
-		})
-	}
-}
-
 func TestClusterPin(t *testing.T) {
 	cm, err := rtfsc.Initialize(context.Background(), nodeOneAPIAddr, nodePort)
 	if err != nil {
 		t.Fatal(err)
 	}
-	decoded, err := cm.DecodeHashString(testPIN)
+	decoded, err := gocid.Decode(testPIN)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -85,7 +58,7 @@ func TestClusterPin(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if err := cm.Pin(context.Background(), tt.args.cid); (err != nil) != tt.wantErr {
+			if _, err := cm.Pin(context.Background(), tt.args.cid); (err != nil) != tt.wantErr {
 				t.Fatalf("Pin() error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})
