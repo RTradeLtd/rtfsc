@@ -57,11 +57,6 @@ func (cm *ClusterManager) ListPeers(ctx context.Context) ([]*api.ID, error) {
 	return peers, nil
 }
 
-// DecodeCID is a helper function to decode a cid from a string type to a cid.Cid type
-func (cm *ClusterManager) DecodeCID(cidString string) (gocid.Cid, error) {
-	return gocid.Decode(cidString)
-}
-
 // Pin is used to add a pin to the cluster
 func (cm *ClusterManager) Pin(ctx context.Context, cid gocid.Cid) (*api.Pin, error) {
 	return cm.Client.Pin(ctx, cid, api.PinOptions{ReplicationFactorMax: -1, ReplicationFactorMin: -1})
