@@ -1,6 +1,6 @@
 module github.com/RTradeLtd/rtfsc
 
-go 1.12
+go 1.14
 
 require (
 	github.com/ipfs/go-cid v0.0.3
